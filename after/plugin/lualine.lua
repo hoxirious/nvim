@@ -1,40 +1,82 @@
+local palette = require("catppuccin.palettes.init").get_palette()
 require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
+    options = {
+        icons_enabled = true,
+        theme = 'catppuccin',
+        section_separators = '',
+        component_separators = '',
+        ignore_focus = {},
     },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
+    sections = {
+        lualine_a = {
+            {
+                "filename",
+                path = 1,
+                separator = { left = '', right = '' },
+                color = { bg = palette.pink, fg = palette.base, gui = "bold" },
+                padding = 0,
+                shorting_target = 0,
+            },
+        },
+        lualine_b = { {
+            'branch',
+        }, {
+            'diff',
+            separator = { right = '' },
+        } },
+
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = { {
+            'progress',
+            path = 1,
+            separator = { left = '', right = '' },
+            color = { bg = palette.pink, fg = palette.base, gui = "bold" },
+            padding = 0,
+            shorting_target = 0,
+        } },
+    },
+    lualine_z = {
+        {
+            "%l/%L,%c",
+            color = { bg = palette.mantle, fg = palette.text },
+            padding = 1,
+        },
+        {
+            "filetype",
+            color = { bg = palette.mantle, fg = palette.text },
+            padding = 0,
+        },
+    },
+    inactive_sections = {
+        lualine_a = {
+            {
+                'filename',
+                path = 1,
+                color = { fg = palette.surface1 },
+                padding = 1,
+                shorting_target = 0,
+            },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {
+            {
+                "%l/%L,%c",
+                color = { fg = palette.surface1 },
+                padding = 1,
+            },
+            {
+                "filetype",
+                color = { fg = palette.surface1 },
+                padding = 0,
+            },
+        },
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = {}
 }
