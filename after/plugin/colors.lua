@@ -2,7 +2,7 @@ require('rose-pine').setup({
     --- @usage 'auto'|'main'|'moon'|'dawn'
     variant = 'auto',
     --- @usage 'main'|'moon'|'dawn'
-    dark_variant = 'main',
+    dark_variant = 'moon',
     bold_vert_split = true,
     dim_nc_background = true,
     disable_background = false,
@@ -57,7 +57,7 @@ local frappe = require("catppuccin.palettes").get_palette "frappe"
 local macchiato = require("catppuccin.palettes").get_palette "macchiato"
 local mocha = require("catppuccin.palettes").get_palette "mocha"
 require("catppuccin").setup({
-    flavour = "frappe", -- latte, frappe, macchiato, mocha
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = {     -- :h background
         light = latte,
         dark = mocha,
@@ -68,7 +68,7 @@ require("catppuccin").setup({
     dim_inactive = {
         enabled = false,           -- dims the background color of inactive window
         shade = "dark",
-        percentage = 0.55,         -- percentage of the shade to apply to the inactive window
+        percentage = 0.15,         -- percentage of the shade to apply to the inactive window
     },
     no_italic = false,             -- Force no italic
     no_bold = false,               -- Force no bold

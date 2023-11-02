@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -119,4 +118,10 @@ return require('packer').startup(function(use)
             })
         end
     })
+    use 'postfen/clipboard-image.nvim'
+    use { 'windwp/nvim-ts-autotag',
+        config = function()
+            require('nvim-ts-autotag').setup()
+        end
+    }
 end)
