@@ -19,7 +19,6 @@ require('competitest').setup {
 		show_nu = true,
 		show_rnu = false,
 		normal_mode_mappings = {
-			switch_window = { "<C-h>", "<C-l>", "<C-i>" },
 			save_and_close = "<C-s>",
 			cancel = { "q", "Q" },
 		},
@@ -31,15 +30,13 @@ require('competitest').setup {
 	},
 	runner_ui = {
 		interface = "popup",
-		selector_show_nu = false,
-		selector_show_rnu = false,
+		selector_show_nu = false, selector_show_rnu = false,
 		show_nu = true,
 		show_rnu = false,
 		mappings = {
 			run_again = "R",
 			run_all_again = "<C-r>",
 			kill = "K",
-			kill_all = "<C-k>",
 			view_input = { "i", "I" },
 			view_output = { "a", "A" },
 			view_stdout = { "o", "O" },

@@ -20,7 +20,7 @@ end)
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set("n", "<C-A>", "ggVG")
+vim.keymap.set("n", "<C-A", "ggVG")
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
@@ -33,10 +33,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>f", ":Format<CR>")
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -87,3 +86,10 @@ map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+local nvim_tmux_nav = require('nvim-tmux-navigation')
+vim.keymap.set('n', "<c-a><c-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+vim.keymap.set('n', "<c-a><c-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+vim.keymap.set('n', "<c-a><c-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+vim.keymap.set('n', "<c-a><c-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+-- vim.keymap.set('n', "<C-W>\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+-- vim.keymap.set('n', "<C-W>Space>", nvim_tmux_nav.NvimTmuxNavigateNext)

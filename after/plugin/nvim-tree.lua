@@ -21,8 +21,13 @@ require("nvim-tree").setup({
         },
     },
     filters = {
-        dotfiles = true,
+        dotfiles = false,
     },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+    }
 })
 vim.keymap.set("n", "<leader>e", "::NvimTreeFindFileToggle<cr>", {
     desc = "nvim tree find file toggle"

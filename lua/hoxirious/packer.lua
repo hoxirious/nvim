@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -59,6 +59,10 @@ return require('packer').startup(function(use)
             { 'neovim/nvim-lspconfig' },
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-cmdline' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'L3MON4D3/LuaSnip' },
         }
@@ -124,4 +128,19 @@ return require('packer').startup(function(use)
             require('nvim-ts-autotag').setup()
         end
     }
+    use { "alexghergh/nvim-tmux-navigation" }
+    use {
+        'barrett-ruth/live-server.nvim',
+        build = 'npm install -g live-server',
+        config = true
+    }
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("null-ls").setup()
+        end,
+        requires = { "nvim-lua/plenary.nvim" },
+    })
+    use { 'otavioschwanck/cool-substitute.nvim'}
+    use { 'nicwest/vim-camelsnek' }
 end)
