@@ -73,7 +73,7 @@ local function organize_imports()
 end
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'lua_ls', 'clangd', 'docker_compose_language_service', 'pyright', 'tsserver', 'rust_analyzer',
+    ensure_installed = { 'lua_ls', 'clangd', 'docker_compose_language_service', 'pyright', 'tsserver', 'rust_analyzer','intelephense',
         'omnisharp', 'cssls', 'html' },
     handlers = {
         lsp_zero.default_setup,
@@ -116,9 +116,12 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
     sources = {
-        { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
+        -- Copilot Source
+        { name = "copilot",  group_index = 2 },
+        -- Other Sources
+        { name = "nvim_lsp", group_index = 2 },
+        { name = "path",     group_index = 2 },
+        { name = "luasnip",  group_index = 2 },
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp.mapping.preset.insert({
@@ -130,8 +133,24 @@ cmp.setup({
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['omnisharp'].setup {
     capabilities = capabilities
+}
+
+require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client, bufnr)
+    end
+}
+
+require('lspconfig')['pyright'].setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client, bufnr)
+    end
 }
