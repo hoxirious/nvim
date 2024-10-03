@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+--  hover:text-primaryThis file can be loaded by calling `lua require('plugins')` from your init.vimgits
 -- Only required if you have packer configured as `opt`
 vim.cmd.packadd('packer.nvim')
 
@@ -14,8 +14,15 @@ return require('packer').startup(function(use)
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
+        -- config = function()
+        --     vim.cmd('colorscheme rose-pine')
+        -- end
+    })
+    use ({
+        "ellisonleao/gruvbox.nvim",
+        as = 'gruvbox',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme gruvbox')
         end
     })
 
@@ -68,63 +75,56 @@ return require('packer').startup(function(use)
         }
     }
     use("folke/zen-mode.nvim")
-    use {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require('copilot').setup({
-                panel = {
-                    enabled = false,
-                    auto_refresh = false,
-                    keymap = {
-                        jump_prev = "[[",
-                        jump_next = "]]",
-                        accept = "<CR>",
-                        refresh = "gr",
-                        open = "<M-CR>"
-                    },
-                    layout = {
-                        position = "bottom", -- | top | left | right
-                        ratio = 0.4
-                    },
-                },
-                suggestion = {
-                    enabled = false,
-                    auto_trigger = false,
-                    debounce = 75,
-                    keymap = {
-                        accept = "<M-l>",
-                        accept_word = false,
-                        accept_line = false,
-                        next = "<M-]>",
-                        prev = "<M-[>",
-                        dismiss = "<C-]>",
-                    },
-                },
-                filetypes = {
-                    yaml = false,
-                    markdown = false,
-                    help = false,
-                    gitcommit = false,
-                    gitrebase = false,
-                    hgcommit = false,
-                    svn = false,
-                    cvs = false,
-                    ["."] = false,
-                },
-                copilot_node_command = 'node', -- Node.js version must be > 18.x
-                server_opts_overrides = {},
-            })
-        end,
-    }
-    use {
-        "zbirenbaum/copilot-cmp",
-        after = { "plugins/copilot.lua" },
-        config = function()
-            require("copilot_cmp").setup()
-        end
-    }
+    -- use {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require('copilot').setup({
+    --             panel = {
+    --                 enabled = false,
+    --                 auto_refresh = false,
+    --                 keymap = {
+    --                     jump_prev = "[[",
+    --                     jump_next = "]]",
+    --                     accept = "<CR>",
+    --                     refresh = "gr",
+    --                     open = "<M-CR>"
+    --                 },
+    --                 layout = {
+    --                     position = "bottom", -- | top | left | right
+    --                     ratio = 0.4
+    --                 },
+    --             },
+    --             suggestion = {
+    --                 enabled = false,
+    --                 auto_trigger = false,
+    --                 debounce = 75,
+    --                 keymap = {
+    --                     accept = "<M-l>",
+    --                     accept_word = false,
+    --                     accept_line = false,
+    --                     next = "<M-]>",
+    --                     prev = "<M-[>",
+    --                     dismiss = "<C-]>",
+    --                 },
+    --             },
+    --             filetypes = {
+    --                 yaml = false,
+    --                 markdown = false,
+    --                 help = false,
+    --                 gitcommit = false,
+    --                 gitrebase = false,
+    --                 hgcommit = false,
+    --                 svn = false,
+    --                 cvs = false,
+    --                 ["."] = false,
+    --             },
+    --             copilot_node_command = 'node', -- Node.js version must be > 18.x
+    --             server_opts_overrides = {},
+    --         })
+    --     end,
+    -- }
     use("eandrju/cellular-automaton.nvim")
     use {
         'xeluxee/competitest.nvim',
@@ -167,6 +167,9 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+    use {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+    }
     use { 'lewis6991/gitsigns.nvim' }
     use { 'ggandor/leap.nvim' }
     use({
@@ -199,4 +202,5 @@ return require('packer').startup(function(use)
     })
     use { 'otavioschwanck/cool-substitute.nvim' }
     use { 'nicwest/vim-camelsnek' }
+    use { 'Hoffs/omnisharp-extended-lsp.nvim' }
 end)

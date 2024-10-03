@@ -20,7 +20,7 @@ end)
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set("n", "<C-A", "ggVG")
+vim.keymap.set("n", "<C-A>", "ggVG")
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
