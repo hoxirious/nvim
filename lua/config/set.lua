@@ -33,3 +33,14 @@ opt.updatetime = 50
 opt.colorcolumn = "0"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
+
+vim.cmd [[set completeopt+=menuone,noselect,popup]]
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+    end,
+})
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
