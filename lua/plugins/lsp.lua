@@ -12,7 +12,7 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "bashls", "clangd", "pyright", "zls", "ts_ls", "ast_grep", "tailwindcss", "somesass_ls", "cssls" },
+                ensure_installed = { "lua_ls", "bashls", "clangd", "pyright", "zls", "ts_ls", "ast_grep", "tailwindcss" },
                 auto_install = true,
             })
         end,
